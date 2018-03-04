@@ -1,6 +1,6 @@
 const
   app = require('./config/express'),
-  port = 8080
+  port = process.env.PORT || 4999;
 
 app.listen(port, () => {
   console.log(`Escutando na porta : ${port}`);
