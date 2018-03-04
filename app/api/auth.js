@@ -3,12 +3,11 @@ jwt = require("jsonwebtoken");
 
 module.exports = function (app) {
   const api = {},
-    model = mongoose.model("Usuario");
+  model = mongoose.model("Usuario");
 
   api.autentica = (req, res) => {
-  
     model
-      .findOne({usuario: req.body.usuario, senha: req.body.senha})
+      .find({"usuario": req.body.usuario, "senha": req.body.senha})
       .then(usuario => {
         if (!usuario) {
           console.log("Usuario ou senha inválidos");
@@ -21,7 +20,10 @@ module.exports = function (app) {
           res.send(token);
         }
       }, error => {
-        console.log("Usuario ou senha inválidos");
+        if(error)
+          console.log('erro: ', error);
+        else 
+          console.log("Acesso negado");
         res.sendStatus(401);
       });
   };

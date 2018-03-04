@@ -3,8 +3,8 @@ const express = require("express"),
   consign = require("consign"),
   bodyParser = require("body-parser"),
   cors = require("cors");
-  require('./database')('localhost/friends-night');
-
+  // require('./database')('localhost/friends-night');
+  require('./database')('root:toor@ds155268.mlab.com:55268/friends-night');
 app.use(cors());
 app.use(bodyParser.json());
 app.set("secret", "Quis custodiet ipsos custodes?");
